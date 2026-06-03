@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+struct Node
+{
+    int data;
+    struct Node *Next;
+
+    Node(int val)
+    {
+        data = val;
+        Next = NULL;
+    }
+};
+
+void delete_index(struct Node *p,int index)
+    {
+        
+    
+        struct Node *ptr = p;
+        struct Node *temp;
+        for(int i=0;i<index;i++)
+        {
+            ptr = ptr->Next;
+        }
+        temp = ptr;
+        ptr->Next = temp->Next;
+        cout<<"Deleted element is:"<<temp->data;
+        free(temp);
+    }
+
+
+int main()
+{
+    int n,index;
+    cout<<"Enter the size:"<<endl;
+    cin>>n;
+    struct Node *Head =NULL;
+    struct Node *tail = NULL;
+    for(int i=0;i<n;i++)
+    {
+        int value;
+        cout<<"Enter value:"<<endl;
+        cin>>value;
+        struct Node *newNode = new Node(value);
+        if(Head == NULL)
+        {
+            Head = newNode;
+            tail = newNode;
+        }
+        else 
+        {
+            tail-> Next = newNode;
+            tail = newNode;
+        }
+    }
+    if(tail !=NULL)
+    {
+        tail->Next = Head;
+    }
+    
+    cout<<"Enter the index whose Node you want to delete:"<<endl;
+    cin>>index;
+    delete_index(Head,index);
+}
