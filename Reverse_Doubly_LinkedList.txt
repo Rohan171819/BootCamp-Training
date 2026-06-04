@@ -1,0 +1,69 @@
+//Reverse Doubly linked list.
+#include<iostream>
+using namespace std;
+struct Node
+{
+    int data;
+    struct Node *Prev;
+    struct Node *Next;
+
+    Node(int val)
+    {
+        data = val;
+        Prev=NULL;
+        Next = NULL;
+    }
+};
+
+void Reverse_List(struct Node * &h)
+{
+    struct Node *ptr = h;
+    struct Node *temp;
+    while(ptr != NULL)
+    {
+        temp = ptr->Prev;
+        ptr->Prev = ptr->Next;
+        ptr->Next = temp;
+
+        ptr= ptr->Prev;
+    }
+    if(temp != NULL)
+    {
+        h = temp->Prev;
+    }
+}
+int main()
+{
+    struct Node *head =NULL;
+    struct Node *tail =NULL;
+    int n;
+    cout<<"Enter the number:"<<endl;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        int value;
+        cout<<"Enter the value:"<<endl;
+        cin>>value;
+        struct Node *newNode = new Node(value);
+        if(head == NULL)
+        {
+            head  = newNode;
+            tail = newNode;
+        }
+        else 
+        {
+            tail->Next = newNode;
+            newNode->Prev = tail;
+            tail = newNode;
+        }
+    }
+     
+    Reverse_List(head);   
+    
+    struct Node *ptr = head;
+    do
+    {
+        cout<<ptr->data;
+        ptr = ptr->Next;
+    }while(ptr != NULL);
+}
