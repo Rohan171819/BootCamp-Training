@@ -1,0 +1,30 @@
+#include<iostream>
+#include<list>
+#include<unordered_set>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout<<"Enter size:"<<endl;
+    cin>>n;
+    list<int> l1;
+    unordered_set<int> s1;
+    for(int i: l1)
+    {
+        int x;
+        cin>>x;
+        l1.push_back(x);
+    }
+    for(int x: l1)
+    {
+        if(s1.find(x) == s1.end())
+        {
+            s1.insert(x);
+        }
+    }
+    for(int z: s1)
+    {
+        cout<<z<<" ";
+    }
+}
