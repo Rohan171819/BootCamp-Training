@@ -1,0 +1,24 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+using namespace std;
+int main()
+{
+    stack<int,vector<int>> str;
+    int n;
+    cout<<"Enter the size:"<<endl;
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cout<<"Enter value:"<<endl;
+        int x;
+        cin>>x;
+        str.push(x);
+    }
+    while(!str.empty())
+    {
+        cout<<str.top();
+        str.pop();
+    }
+    return 0;
+}
