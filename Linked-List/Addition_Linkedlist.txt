@@ -1,0 +1,57 @@
+#include<iostream>
+#include<list>
+using namespace std;
+int main()
+{
+    list<int> l1;
+    list<int> l2;
+    list<int> result;
+    int n1,n2;
+    cout<<"Enter n1 size:"<<endl;
+    cin>>n1;
+    cout<<"Enter n2 size:"<<endl;
+    cin>>n2;
+    cout<<"Enter Linked list1 elements:"<<endl;
+    for(int i=0;i<n1;i++)
+    {
+        int x;
+        cin>>x;
+        l1.push_back(x);
+    }
+    cout<<"Enter Linked list2 elements:"<<endl;
+    for(int i=0;i<n2;i++)
+    {
+        int x;
+        cin>>x;
+        l2.push_back(x);
+    }
+    auto ptr1 = l1.begin();
+    auto ptr2 = l2.begin();
+    int carry=0;
+    while(ptr1 != l1.end() || ptr2!= l2.end())
+    {
+        int sum = carry;
+        if(ptr1 != l1.end())
+        {
+            sum += *ptr1;
+            ++ptr1;
+        }
+        if(ptr2 != l2.end())
+        {
+            sum += *ptr2;
+            ++ptr2;
+        }
+        
+        result.push_back(sum %  10);
+        carry = sum /10;
+    }
+    if(carry > 0)
+    {
+        result.push_back(carry);
+    }
+    cout<<"Sum linked list is:"<<endl;
+    for(int i:result)
+    {
+        cout<<i<< " ";
+    }
+}
