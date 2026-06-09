@@ -1,0 +1,39 @@
+#include<iostream>
+#include<list>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"Enter n:"<<endl;
+    cin>>n;
+    list<int> l1;
+    cout<<"Enter values:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        l1.push_back(x);
+    }
+    list<int> l1_Even,l1_Odd;
+    for(int i: l1)
+    {
+        if(i % 2 ==0)
+        {
+            l1_Even.push_back(i);
+        }
+        else
+        {
+            l1_Odd.push_back(i);
+        }
+    }
+    cout<<"Even List is:"<<endl;
+    for(int i: l1_Even)
+    {
+        cout<<i<<" ";
+    }
+    cout<<"\nOdd List is:"<<endl;
+    for(int i: l1_Odd)
+    {
+        cout<<i<<" ";
+    }
+}
