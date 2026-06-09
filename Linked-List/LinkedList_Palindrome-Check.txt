@@ -1,0 +1,44 @@
+#include<iostream>
+#include<list>
+using namespace std;
+int main()
+{
+    list<int> l1;
+    int n;
+    cout<<"Enter size of list:"<<endl;
+    cin>>n;
+    
+    cout<<"Enter values:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        l1.push_back(x);
+    }
+    auto ptr1 = l1.begin();
+    auto ptr2 = l1.end();
+    ptr2--;
+    int flag =0;
+    for(int i=0;i<n/2;i++)
+    {
+        if(*ptr1 == *ptr2)
+        {
+            ptr1++;
+            ptr2--;
+        }
+        else
+        {
+            flag =1;
+            break;
+        }
+    }
+    if(flag)
+    {
+        cout<<"List is not Palindrome";
+    }
+    else
+    {
+        cout<<"List is Palindrome";
+    }
+    return 0;
+}
