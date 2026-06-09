@@ -1,46 +1,40 @@
 #include<iostream>
+#include<list>
 using namespace std;
-struct Node
-{
-    int data;
-    struct Node* prev;
-    struct Node* Next;
-    
-    Node(int val)
-    {
-        data=val;
-        prev=NULL;
-        Next=NULL;
-    }
-};
 int main()
 {
-  int n;
-  cin>>n;
-  struct Node *head=NULL;
-  struct Node *tail=NULL;
-  for(int i=0;i<n;i++)
-  {
-      int value;
-      cout<<"Enter value:"<<endl;
-      cin>>value;
-      struct Node *newNode = new Node(value); 
-      if(head==NULL)
-      {
-          head= newNode;
-          tail= newNode;
-      }
-      else
-      {
-          tail->Next= newNode;
-          newNode->prev=tail;
-          tail=newNode;
-      }
-  }
-  struct Node*temp=head;
-  while(temp!=NULL && temp->Next!=NULL)
-  {
-      cout<<temp->data;
-      temp=temp->Next;
-  }
+    list<int> l1;
+    int n;
+    cout<<"Enter size of list:"<<endl;
+    cin>>n;
+    
+    cout<<"Enter values:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>x;
+        l1.push_back(x);
+    }
+    int value,index;
+    
+    cout<<"Actual list is:"<<endl;
+    for(int i: l1)
+    {
+        cout<<i<<" ";
+    }
+    cout<<"\nEnter value to replace:"<<endl;
+    cin>>value;
+    cout<<"\nEnter index to replace:"<<endl;
+    cin>>index;
+    auto it = l1.begin();
+    advance(it,index);
+    *it = value;
+    
+    cout<<"Upated list is:"<<endl;
+    for(int i: l1)
+    {
+        cout<<i<<" ";
+    }
+    
+    
 }
