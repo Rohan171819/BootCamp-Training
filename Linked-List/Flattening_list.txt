@@ -1,0 +1,50 @@
+#include<iostream>
+uisng namespace std;
+class Node {
+public:
+    int data;
+    Node* next;
+    Node* bottom;
+
+    Node(int x) {
+        data = x;
+        next = nullptr;
+        bottom = nullptr;
+    }
+}; 
+
+class Solution {
+  public:
+    Node *flatten(Node *root) {
+        if(root == NULL)
+        {
+            return root;
+        }
+        struct Node * curr = root;
+        while(curr != NULL)
+        {
+            if(curr-> bottom != NULL)
+            {
+                // Task1 flatten the bottom nodes.
+                struct Node * next = curr->next;
+                curr->next = flatten(curr->bottom);
+                curr-> bottom = NULL;
+                
+                // Task2  find tail.
+                while(curr->next !=NULL)
+                {
+                    curr =curr->next;
+                }
+                
+                // Task3 attack tail to next node.
+                if(next != NULL)
+                {
+                    cur-> next = next;
+                }
+            }
+            curr =curr->next;
+        }
+        return root;
+        
+    }
+};
