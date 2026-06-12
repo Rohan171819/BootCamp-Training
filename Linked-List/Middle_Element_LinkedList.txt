@@ -18,9 +18,9 @@ public:
         struct ListNode *fast = head;
         while(fast != NULL && fast->next != NULL)
         {
-            ++slow;
-            ++fast;
-            ++fast;
+            slow = slow->next;
+            fast = fast->next;
+            fast = fast->next;
         }
         return *slow;
     }
