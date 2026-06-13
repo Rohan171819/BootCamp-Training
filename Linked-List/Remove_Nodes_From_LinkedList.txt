@@ -1,0 +1,47 @@
+#include<stack>
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* removeNodes(ListNode* head) 
+    {
+        stack<struct ListNode*> s1;
+        struct  ListNode *temp = head;
+        //Inserting the values into the stack.
+        while(temp!=NULL)
+        {
+            s1.push(temp);
+            temp=temp->next;
+        }
+
+        // Creating the ans list.
+        struct ListNode *newHead = s1.top();
+        s1.pop();
+        int max = newHead->val;
+        while(!s1.empty())
+        {
+            struct ListNode *node = s1.top();
+            s1.pop();
+            if(node->val < max)
+            {
+                continue;
+            }
+            else
+            {
+                // Inserting the value in the head.
+                node->next = newHead;
+                newHead = node;
+                max = node->val;
+            }
+        }
+        return newHead;
+    }
+};
