@@ -1,0 +1,18 @@
+#include <iostream>
+#include<string>
+using namespace std;
+int main() 
+{
+   string str,pattern="ABC";
+   int count=0;
+   cout<<"Enter string:"<<endl;
+   cin>> str;
+   while((count=str.find(pattern,count)) != string::npos)
+   {
+       str.replace(count,pattern.length(),"*");
+       count+=1;
+   }
+   cout<<"Updated String is:";
+   cout<<str;
+    return 0;
+}
