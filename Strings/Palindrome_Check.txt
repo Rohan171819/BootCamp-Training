@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        int front = 0;
+        int back =s.length()-1;
+        while(front< back)
+        {
+            while(front<back && !isalnum(front))
+            {
+                front++;
+            }
+            while(front<back && !isalnum(back))
+            {
+                back--;
+            }
+            if(s[front]!= s[back])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+};
