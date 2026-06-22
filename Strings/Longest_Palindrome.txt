@@ -1,0 +1,35 @@
+class Solution
+{
+    int longestPalindrome(string s)
+    {
+        unordered_map<char,int> mp;
+        for(char ch : s)
+        {
+            mp[ch]++;
+        }
+        bool OddPresent = false;
+        int ans =0;
+        for(auto x: mp)
+        {
+            int freq = x.second;
+            if(freq %2 == 0)
+            {
+                ans += freq;
+            }
+            else
+            {
+                ans += freq -1;
+                OddPresent = true;
+            }
+        }
+        if(OddPresent)
+        {
+            return count + 1;
+        }
+        else
+        {
+            return count;
+        }
+    }
+
+}
